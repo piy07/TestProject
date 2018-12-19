@@ -12,14 +12,17 @@ using System.Threading;
 
 namespace TestProject
 {
-    [TestFixture]
-    [Parallelizable]
-    public class NunitParallelTest : BaseClass
+    [TestFixture(typeof(FirefoxDriver))]
+    [TestFixture(typeof(ChromeDriver))]
+    //[TestFixture]
+    //[Parallelizable]
+    public class NunitParallelTest<TwebDriver> where TwebDriver : IWebDriver, new()  //BaseClass
     {
+        public IWebDriver driver;
         [Test]
         public void SearchGoogle()
         {
-            driver = new ChromeDriver();
+            driver = new TwebDriver();
             driver.Manage().Window.Maximize();
             driver.Navigate().GoToUrl("https://www.google.com/");
             driver.FindElement(By.Name("q")).SendKeys("Piyush Verma" + Keys.Enter);
@@ -28,7 +31,7 @@ namespace TestProject
         }
     }
 
-    [TestFixture]
+    /*[TestFixture]
     [Parallelizable]
     public class NunitParallelTest2 : BaseClass
     {
@@ -42,5 +45,5 @@ namespace TestProject
             Thread.Sleep(5000);
             driverff.Quit();
         }
-    }
+    }*/
 }
