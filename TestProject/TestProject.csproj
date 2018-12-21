@@ -64,6 +64,7 @@
     <Compile Include="BaseClass.cs" />
     <Compile Include="First5.cs" />
     <Compile Include="FirstTestClass.cs" />
+    <Compile Include="MSHomePage.cs" />
     <Compile Include="NunitParallelTest.cs" />
     <Compile Include="Parallel.cs" />
     <Compile Include="PlayPause.cs" />
